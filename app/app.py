@@ -21,7 +21,7 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return redirect(url_for('login'))
+    return redirect(url_for('register'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
