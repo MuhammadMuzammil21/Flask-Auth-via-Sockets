@@ -1,10 +1,13 @@
 import socket, ssl, json
+import os
 from auth_handler import register_user, validate_user
 
 HOST = '127.0.0.1'
 PORT = 65432
-CERT_FILE = 'server/certs/server.crt'
-KEY_FILE = 'server/certs/server.key'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CERT_FILE = os.path.join(BASE_DIR, "certs", "server.crt")
+KEY_FILE = os.path.join(BASE_DIR, "certs", "server.key")
+
 
 def start_secure_server():
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
