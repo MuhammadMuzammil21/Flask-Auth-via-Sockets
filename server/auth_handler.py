@@ -2,7 +2,9 @@ import hashlib
 import json
 import os
 
-USERS_FILE = "server/users.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+USERS_FILE = os.path.join(BASE_DIR, "users.json")
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
