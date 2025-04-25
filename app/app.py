@@ -1,20 +1,18 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
-import client  # uses your SSL socket client code
+import client
 
 app = Flask(__name__)
-app.secret_key = 'devsecretkey'  # used for session cookies
+app.secret_key = 'devsecretkey'  
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-# Simulated User Class
 class User(UserMixin):
     def __init__(self, id):
         self.id = id
 
-# Load user from session
 @login_manager.user_loader
 def load_user(user_id):
     return User(user_id)
