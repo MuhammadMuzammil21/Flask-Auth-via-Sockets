@@ -1,4 +1,6 @@
-import socket, ssl, json
+import socket
+import ssl
+import json
 
 HOST = '127.0.0.1'
 PORT = 65432
@@ -18,7 +20,6 @@ def send_request_secure(action, username, password):
         with context.wrap_socket(sock, server_hostname=HOST) as ssock:
             try:
                 ssock.sendall(json.dumps(data).encode())
-                response = ssock.recv(1024)
                 response = ssock.recv(1024)
                 decoded_response = response.decode()
                 print("Server (SSL):", decoded_response)

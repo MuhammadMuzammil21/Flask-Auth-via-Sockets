@@ -42,6 +42,7 @@ def register():
         password = request.form['password']
         response = client.send_request_secure('register', username, password)
         flash(response)
+        return redirect(url_for('login')) 
     return render_template('register.html')
 
 @app.route('/home')
